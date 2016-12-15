@@ -1,0 +1,70 @@
+<!-- Pass page title and content {html between braces} to the main view -->
+@main("Products") {
+  <!-- HTML content for the index view -->
+  <div class="row">
+      <div class="col-sm-2">
+        <div class="well">
+          <h4>Categories</h4>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <table class="table table-bordered table-hover table-condensed">
+          <thead>
+          <!-- The header row-->
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
+            <!-- Product row(s) -->
+            <tr>
+              <td>1</td>
+              <td>Television</td>
+              <td>Sony 42" LCD</td>
+              <td>Audio Visual</td>
+              <td>100</td>
+              <td>720.00</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Kettle</td>
+              <td>Blue glass 1.8l</td>
+              <td>Kitchen</td>
+              <p>
+                <a href="@routes.HomeController.addProduct()">
+                <button class="btn btn-primary">Add a Product</button>
+                </a>
+              </p>
+              @if(flash.containsKey("success")){
+                <div class="alert alert-success">
+                 @flash.get("success")
+                </div>
+               }
+              <td>
+                <a href="@routes.HomeController.deleteProduct(p.getid)" class="btn-xs btn danger"
+                onclick="return confirmDel()">
+                 <span> class+"glyphicon glyphicon-trash"></span>
+                </a>
+
+                <script>
+                 function confirmDel() {
+                 return confirm('ARE YOU SURE');
+                 }
+                </script>
+
+              </td>
+
+              <td>10</td>
+              <td>89.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <!-- End of content for main -->
+}

@@ -1,0 +1,30 @@
+<!-- Pass page title and content {html between braces} to the main view -->
+@import helper._
+
+@(addProductForm: Form[models.Product])
+
+@main("addProduct") {
+  <!-- HTML content for the index view -->
+
+        h4>add a new product</h4>
+
+        @form(action = routes.HomeController.adProductSubmit(), 'class -> "form-horizontal", 'role->"form") {
+
+
+
+          @inputText(addProductForm("name"), 'label -> "Name", 'class -> "form-control")
+          @inputText(addProductForm("description"), 'label -> "description", 'class -> "form-control")
+          @inputText(addProductForm("stock"), 'label -> "stock", 'class -> "form-control")
+          @inputText(addProductForm("price"), 'label -> "price", 'class -> "form-control")
+
+
+          <div class="actions">
+             <input type="submit" value="Add Product" class="btmn btn-primary">
+            <a href="@routes.HomeController.index()">
+               <button class="btn btn warning">cancel</button>
+             </a>
+
+          </div>
+
+    <!-- End of  form definition -->
+}
